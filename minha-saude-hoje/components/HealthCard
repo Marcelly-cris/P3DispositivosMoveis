@@ -1,0 +1,66 @@
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+const iconMap = {
+  Passos: 'walk',
+  Sono: 'sleep',
+  Hidratação: 'water',
+  'Frequência Cardíaca': 'heart-pulse',
+};
+
+const colorMap = {
+  Passos: '#2ecc71',         
+  Sono: '#3498db',            
+  Hidratação: '#1abc9c',      
+  'Frequência Cardíaca': '#e74c3c', 
+};
+
+export default function HealthCard({ title, value }) {
+  return (
+    <View style={[styles.card, { borderLeftColor: colorMap[title] }]}>
+      <MaterialCommunityIcons
+        name={iconMap[title]}
+        size={36}
+        color={colorMap[title]}
+        style={styles.icon}
+      />
+      <View>
+        <Text style={styles.cardTitle}>{title}</Text>
+        <Text style={styles.cardValue}>{value}</Text>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  card: {
+    flexDirection: 'row',
+    backgroundColor: '#fefefe',
+    padding: 20,
+    marginVertical: 10,
+    marginHorizontal: 16,
+    borderRadius: 14,
+    borderLeftWidth: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    elevation: 5,
+    alignItems: 'center',
+  },
+  icon: {
+    marginRight: 15,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#34495e',
+  },
+  cardValue: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    marginTop: 4,
+  },
+});
